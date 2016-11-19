@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:outbrain/ob-genie.git"
+    "url": "git@github.com:MrFrankel/ob-genie.git"
   },
   "bugs": {
-    "url": "https://github.com/outbrain/ob-genie/issues"
+    "url": "https://github.com/MrFrankel/ob-genie/issues"
   },
   "main": "slushfile.js",
   "engines": {
