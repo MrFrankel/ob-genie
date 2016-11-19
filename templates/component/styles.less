@@ -1,0 +1,12 @@
+& {
+  @import (reference, multiple) '<%= prefix %>/style/mixins/lesshat-prefixed';
+  @import (reference, multiple) '<%= prefix %>/style/variables';
+  @<%= compNameHyph %>-pre: '<%= compNameHyph %>-';
+  @<%= compNameHyph %>-prefix: ~'@{core-prefix}@{<%= compNameHyph %>-pre}';
+
+  ob-<%= compNameHyph %> {
+      @{<%= compNameHyph %>-prefix}container {
+
+   }
+  }
+}
