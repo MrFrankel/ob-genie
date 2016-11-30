@@ -35,8 +35,5 @@
   },
   "keywords": [
     "slushgenerator"
-  ],
-  "devDependencies": {
-    "lodash": "^4.17.2"
-  }
+  ]
 }
