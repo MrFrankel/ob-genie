@@ -48,10 +48,12 @@ function getMainModuleSrc(type) {
   return gulp.src(globals.prePath + globals.sitemodulePath + type);
 }
 
-var camelCase = createCompounder(function(result, word, index) {
-  word = word.toLowerCase();
-  return result + (index ? capitalize(word) : word);
-});
+function camelCase(str) {
+  return str
+    .replace(/\s(.)/g, function($1) { return $1.toUpperCase(); })
+    .replace(/\s/g, '')
+    .replace(/^(.)/, function($1) { return $1.toLowerCase(); });
+}
 
 function setFileName(compName, file) {
   if (file.basename[0] === '_') {
