@@ -14,7 +14,6 @@ var gulp = require('gulp'),
   template = require('gulp-template'),
   rename = require('gulp-rename'),
   replace = require('gulp-replace'),
-  _ = require('lodash'),
   inquirer = require('inquirer');
 
 
@@ -48,6 +47,11 @@ function camelCaseToDash(myStr) {
 function getMainModuleSrc(type) {
   return gulp.src(globals.prePath + globals.sitemodulePath + type);
 }
+
+var camelCase = createCompounder(function(result, word, index) {
+  word = word.toLowerCase();
+  return result + (index ? capitalize(word) : word);
+});
 
 function setFileName(compName, file) {
   if (file.basename[0] === '_') {
@@ -96,7 +100,7 @@ gulp.task('default', function (done) {
 });
 
 function createService(answers) {
-  answers.srvName = _.camelCase(answers.srvName);
+  answers.srvName = camelCase(answers.srvName);
   answers.srvNameU = capitalizeFirstLetter(answers.srvName);
   answers.srvNameService = capitalizeFirstLetter(answers.srvName);
   answers.srvNameHyph = camelCaseToDash(answers.srvName);
