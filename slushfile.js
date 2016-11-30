@@ -59,6 +59,7 @@ function setFileName(compName, file) {
 }
 
 function createComponent(answers) {
+  answers.compName = _.camelCase(answers.compName);
   answers.compNameHyph = camelCaseToDash(answers.compName);
   answers.compNameU = capitalizeFirstLetter(answers.compName);
   answers.compNameL = answers.compName;
@@ -67,12 +68,12 @@ function createComponent(answers) {
   answers.prefix = _.times(answers.path.split(globals.sep).length - 1, function () {return '..';}).join(globals.sep);
 
   getMainModuleSrc(globals.siteModule)
-    .pipe(replace(globals.compToken, '.component(' + answers.compNameComp + '.obName, ' + answers.compNameComp + ')\n  ' + globals.compToken))
+    .pipe(replace(globals.compToken, '.component(' + answers.compNameComp + '.obName, ' + answers.compNameComp + ')\n' + globals.compToken))
     .pipe(replace(globals.importCompToken, "import " + answers.compNameComp + " from '../../" + answers.path + globals.sep + answers.compNameHyph + globals.sep + answers.compNameHyph + ".component'\n  " + globals.importCompToken))
     .pipe(gulp.dest(globals.prePath + globals.sitemodulePath));
 
   getMainModuleSrc(globals.siteLess)
-    .pipe(replace(globals.importCompToken, "@import '../../" + answers.path + globals.sep + answers.compNameHyph + globals.sep + answers.compNameHyph + "';\n  " + globals.importCompToken))
+    .pipe(replace(globals.importCompToken, "@import '../../" + answers.path + globals.sep + answers.compNameHyph + globals.sep + answers.compNameHyph + "';\n" + globals.importCompToken))
     .pipe(gulp.dest(globals.prePath + globals.sitemodulePath));
 }
 
@@ -95,13 +96,15 @@ gulp.task('default', function (done) {
 });
 
 function createService(answers) {
+  answers.srvName = _.camelCase(answers.srvName);
   answers.srvNameU = capitalizeFirstLetter(answers.srvName);
   answers.srvNameService = capitalizeFirstLetter(answers.srvName);
+  answers.srvNameHyph = camelCaseToDash(answers.srvName);
   answers.path = globals.wrkdir.substr(globals.wrkdir.indexOf('modules'), globals.wrkdir.length - 1);
 
   getMainModuleSrc(globals.siteModule)
-    .pipe(replace(globals.srvToken, '.service(' + answers.srvNameService + '.obName, ' + answers.srvNameService + ')\n  ' + globals.srvToken))
-    .pipe(replace(globals.importSrvToken, "import " + answers.srvNameService + " from '../../" + answers.path + globals.sep + answers.srvName + ".srv'\n  " + globals.importSrvToken))
+    .pipe(replace(globals.srvToken, '.service(' + answers.srvNameService + '.obName, ' + answers.srvNameService + ')\n' + globals.srvToken))
+    .pipe(replace(globals.importSrvToken, "import " + answers.srvNameHyph + " from '../../" + answers.path + globals.sep + answers.srvNameHyph + ".srv'\n" + globals.importSrvToken))
     .pipe(gulp.dest(globals.prePath + globals.sitemodulePath));
 
 }
