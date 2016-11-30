@@ -65,13 +65,17 @@ function setFileName(compName, file) {
 }
 
 function createComponent(answers) {
-  answers.compName = _.camelCase(answers.compName);
+  answers.compName = camelCase(answers.compName);
   answers.compNameHyph = camelCaseToDash(answers.compName);
   answers.compNameU = capitalizeFirstLetter(answers.compName);
   answers.compNameL = answers.compName;
   answers.compNameComp =  answers.compNameU + 'Component';
   answers.path = globals.wrkdir.substr(globals.wrkdir.indexOf('modules'), globals.wrkdir.length - 1);
-  answers.prefix = _.times(answers.path.split(globals.sep).length - 1, function () {return '..';}).join(globals.sep);
+  var path = [];
+  for(var i = 0 ; i < answers.path.split(globals.sep).length - 1 ; i++) {
+    path.push('..');
+  }
+  answers.prefix = path.join(globals.sep);
 
   getMainModuleSrc(globals.siteModule)
     .pipe(replace(globals.compToken, '.component(' + answers.compNameComp + '.obName, ' + answers.compNameComp + ')\n' + globals.compToken))
