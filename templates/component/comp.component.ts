@@ -7,7 +7,7 @@ class <%= compNameU %>Ctrl {
 const <%= compNameComp %> = {
   templateUrl: [
     'TemplateBasePath', TemplateBasePath =>
-      TemplateBasePath + '<%= path %>/<%= compNameL %>/<%= compNameL %>.html'
+      TemplateBasePath + '<%= path %>/<%= compNameHyph %>/<%= compNameHyph %>.html'
   ],
   bindings: <{[binding: string]: string}> {
   },

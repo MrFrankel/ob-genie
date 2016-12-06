@@ -23,15 +23,17 @@
     "test": "echo \"No tests\""
   },
   "dependencies": {
-    "slush": ">=1.0.0",
+    "console-png": "^1.1.0",
     "gulp": "^3.6.2",
-    "gulp-template": "^0.1.1",
-    "gulp-install": "^0.1.4",
+    "gulp-color": "0.0.1",
     "gulp-conflict": "^0.1.1",
+    "gulp-install": "^0.1.4",
     "gulp-rename": "^1.2.0",
-    "inquirer": "^0.4.1",
+    "gulp-replace": "^0.5.4",
+    "gulp-template": "^0.1.1",
     "iniparser": "^1.0.5",
-    "gulp-replace": "^0.5.4"
+    "inquirer": "^0.4.1",
+    "slush": ">=1.0.0"
   },
   "keywords": [
     "slushgenerator"
