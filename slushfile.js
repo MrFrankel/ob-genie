@@ -25,25 +25,21 @@ var globals = {
   appPaths: {
     site: {
       moduleName: 'site.module.ts',
-      lessName: 'site',
       lessPrefix: 'prefix',
       modulePath: 'modules/site/'
     },
     amplify: {
       moduleName: 'amplify.module.ts',
-      lessName: 'amplify',
       lessPrefix: 'core-prefix',
       modulePath: 'modules/amplify/'
     },
     funnel: {
       moduleName: 'funnel.module.ts',
-      lessName: 'funnel',
       lessPrefix: 'prefix',
       modulePath: 'modules/funnel/'
     },
     checkout: {
       moduleName: 'funnel.module.ts',
-      lessName: 'funnel',
       lessPrefix: 'prefix',
       modulePath: 'modules/funnel/'
     }
@@ -114,9 +110,6 @@ function createComponent(answers) {
     .pipe(replace(globals.importCompToken, "import " + answers.compNameComp + " from '../../" + answers.path + globals.sep + answers.compNameHyph + globals.sep + answers.compNameHyph + ".component'\n  " + globals.importCompToken))
     .pipe(gulp.dest(globals.prePath + globals.curAppPaths.modulePath));
 
-  getMainModuleSrc(globals.curAppPaths.lessName + '.less')
-    .pipe(replace(globals.importCompToken, "@import '../../" + answers.path + globals.sep + answers.compNameHyph + globals.sep + answers.compNameHyph + "';\n" + globals.importCompToken))
-    .pipe(gulp.dest(globals.prePath + globals.curAppPaths.modulePath));
 }
 
 gulp.task('default', function (done) {

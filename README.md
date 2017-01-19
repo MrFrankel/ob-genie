@@ -38,7 +38,7 @@ If you have any problem or suggestion please open an issue [here](https://github
 
 The MIT License
 
-Copyright (c) 2014, Arvind Ravulavaru
+Copyright (c) 2014, Oubrain
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

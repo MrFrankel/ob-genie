@@ -1,3 +1,5 @@
+import './<%= compNameHyph %>.less';
+
 class <%= compNameU %>Ctrl {
   static $inject = [];
   constructor() {
@@ -5,10 +7,7 @@ class <%= compNameU %>Ctrl {
 }
 
 const <%= compNameComp %> = {
-  templateUrl: [
-    'TemplateBasePath', TemplateBasePath =>
-      TemplateBasePath + '<%= path %>/<%= compNameHyph %>/<%= compNameHyph %>.html'
-  ],
+  template: require('./<%= compNameHyph %>.pug')(),
   bindings: <{[binding: string]: string}> {
   },
   controller: <%=compNameU%>Ctrl,
