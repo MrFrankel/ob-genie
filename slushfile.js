@@ -26,21 +26,25 @@ var globals = {
     site: {
       moduleName: 'site.module.ts',
       lessPrefix: 'prefix',
+      classPrefix: '_am_site',
       modulePath: 'modules/site/'
     },
     amplify: {
       moduleName: 'amplify.module.ts',
       lessPrefix: 'core-prefix',
+      classPrefix: '_am_core',
       modulePath: 'modules/amplify/'
     },
     funnel: {
       moduleName: 'funnel.module.ts',
       lessPrefix: 'prefix',
+      classPrefix: '_am_core',
       modulePath: 'modules/funnel/'
     },
     checkout: {
       moduleName: 'funnel.module.ts',
       lessPrefix: 'prefix',
+      classPrefix: '_am_core',
       modulePath: 'modules/funnel/'
     }
   },
@@ -99,6 +103,7 @@ function createComponent(answers) {
   answers.path = globals.wrkdir.substr(globals.wrkdir.indexOf('modules'), globals.wrkdir.length - 1);
   globals.curAppPaths = globals.appPaths[answers.appName.toLowerCase()];
   answers.lessPrefix = globals.curAppPaths.lessPrefix;
+  answers.classPrefix = globals.curAppPaths.classPrefix;
   var path = [];
   for (var i = 0; i < answers.path.split(globals.sep).length - 1; i++) {
     path.push('..');
